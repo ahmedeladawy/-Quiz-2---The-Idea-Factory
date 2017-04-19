@@ -1,0 +1,54 @@
+<div class="container">
+  <h1><%= @idea.title %></h1>
+
+  <p><%= @idea.description %></p>
+
+  <p> Created on: <%= @idea.created_at %></p>
+
+ <% if can? :edit, @idea %>
+  <%= link_to "Edit", edit_idea_path(@idea), class: 'btn btn-success' %>
+  <% end %>
+
+  <% if can? :destroy, @idea %>
+  <%= link_to "Delete", idea_path(@idea), method: :delete, data:
+                                    {confirm: "Are you sure?"}, class: 'btn btn-danger'  %>
+  <% end %>
+  <!-- >>>>>>>>>>>>>Reviews Form>>>>>>>>>>>>>>>> -->
+  <h2>Add a Review</h2>
+  <!-- >>>>>>>>>>handling errors>>>>>>> -->
+  <% if @review.errors.any? %>
+  <ul>
+    <% @review.errors.full_messages.each do |msg| %>
+      <li><%= msg %><li>
+    <% end %>
+  </ul>
+<% end %>
+  <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+<%= form_for [@idea, @review] do |f| %>
+  <div class="form-group">
+    <%= f.label :Review %>
+    <%= f.text_area :body, class: 'form-control' %>
+  </div>
+  <%= f.submit class:'btn btn-success' %>
+<% end %>
+ <!-- >>>>>>>>>>>> Display Reviews>>>>>>>>>>>>>>> -->
+ <div class="container">
+   <h2>Reviews</h2>
+   <% @idea.reviews.each do |review| %>
+  <p><%= review.body %></p>
+  <p> Created on: <%= review.created_at %></p>
+  <% if can? :edit, review %>
+    <%= link_to "Edit", edit_idea_review_path(@idea, review), class: 'btn btn-success' %>
+  <% end %>
+    <% if can? :destroy, review %>
+      <%= link_to "Delete", idea_review_path(@idea, review), method: :delete, data:
+                                    {confirm: "Are you sure?"}, class: 'btn btn-danger'  %>
+  <% end %>
+
+  <hr>
+<% end %>
+
+
+ </div>
+
+</div>

@@ -1,0 +1,20 @@
+
+<div class="container">
+  <div style="width:100px;height:100px;border:1px solid #000; border-radius: 10%"></div>
+  <h4>Idea Factory</h4>
+  <div style="float: right;  margin-top: -50px">
+    <%= link_to "New Idea", new_idea_path, class:'btn btn-primary'%>
+  </div>
+
+  <hr>
+
+  <% @ideas.each do |idea|  %>
+    <div>
+      <h2><%= link_to idea.title, idea_path(idea) %></h2>
+      <p><%= idea.description %></p>
+      <a>By <%= idea.user.full_name%></a>
+      <hr>
+    </div>
+
+  <% end %>
+</div>

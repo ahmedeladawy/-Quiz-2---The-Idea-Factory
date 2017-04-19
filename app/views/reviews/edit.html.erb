@@ -1,0 +1,11 @@
+<div class="container">
+
+  <%= form_for [@idea, @review] do |f| %>
+    <div class="form-group">
+      <%= f.label :Review %>
+      <%= f.text_area :body, class: 'form-control' %>
+    </div>
+    <%= f.submit class:'btn btn-success' %>
+  <% end %>
+
+</div>
