@@ -10,9 +10,9 @@
 
   <% @ideas.each do |idea|  %>
     <div>
-      <h2><%= link_to idea.title, idea_path(idea) %></h2>
-      <p><%= idea.description %></p>
-      <a>By <%= idea.user.full_name%></a>
+      <h2 class='target'><%= link_to idea.title, idea_path(idea) %></h2>
+      <p class='slide'><%= idea.description %></p>
+      By <%= link_to idea.user.full_name%>
       <hr>
     </div>
 

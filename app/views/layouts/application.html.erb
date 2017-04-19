@@ -11,7 +11,7 @@
   <body>
     <%= link_to "Home", root_path %> |
     <%= link_to "New Idea", new_idea_path %> |
-    
+
 
     <% if user_signed_in? %>
     Hello <%= current_user.first_name %>,
