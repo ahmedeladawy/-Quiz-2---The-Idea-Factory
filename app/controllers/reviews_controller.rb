@@ -40,6 +40,6 @@ class ReviewsController < ApplicationController
 
   def find_idea
     @idea = Idea.find(params[:idea_id])
-end
+  end
 
 end

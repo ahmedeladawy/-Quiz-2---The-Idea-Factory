@@ -46,8 +46,6 @@ class IdeasController < ApplicationController
 
 
 
-
-
   private
 
   def find_idea

@@ -10,6 +10,15 @@ class Ability
     can :manage, Review do |review|
       review.user == user
     end
+
+    can :like, Idea do |idea|
+     user != idea.user
+    end
+
+    cannot :like, Idea do |idea|
+     user == idea.user
+    end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
